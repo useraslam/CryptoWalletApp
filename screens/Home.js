@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { MainLayout } from "./";
-import BalanceInfo from "../components/BalanceInfo";
-import IconTextButton from "../components/IconTextButton";
+import { Chart, IconTextButton, BalanceInfo } from "../components";
 import { connect } from "react-redux";
 import { getHoldings, getCoinMarket } from "../stores/market/MarketAction";
 import { useFocusEffect } from "@react-navigation/native";
@@ -80,7 +79,16 @@ const Home = ({ getHoldings, getCoinMarket, myHoldings, coins }) => {
           backgroundColor: COLORS.black,
         }}
       >
+        {/* wallet info */}
         {renderWalletInfoSection()}
+
+        {/* charts */}
+        <Chart
+          containerStyle={{
+            marginTop: SIZES.padding * 2,
+          }}
+          chartPrices={coins[0]?.sparkline_in_7d?.price}
+        />
       </View>
     </MainLayout>
   );
