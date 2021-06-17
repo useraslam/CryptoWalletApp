@@ -18,7 +18,7 @@ const Chart = ({ containerStyle, chartPrices }) => {
     ? chartPrices?.map((item, index) => {
         return {
           x: startUnixTimestamp + (index + 1) * 3600,
-          Y: item,
+          y: item,
         };
       })
     : [];
@@ -34,12 +34,17 @@ const Chart = ({ containerStyle, chartPrices }) => {
             points,
             smoothingStrategy: "bezier",
           }}
-        ></ChartPathProvider>
+        >
+          <ChartPath
+            height={150}
+            width={SIZES.width}
+            stroke={COLORS.lightGreen}
+            strokeWidth={2}
+          />
+        </ChartPathProvider>
       )}
     </View>
   );
 };
 
 export default Chart;
-
-// 127
