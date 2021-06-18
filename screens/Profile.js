@@ -98,7 +98,12 @@ const Setting = ({ title, value, type, onPress }) => {
         >
           {title}
         </Text>
-        <Switch value={value} onValueChange={(value) => onPress(value)} />
+        <Switch
+          trackColor={{ false: COLORS.lightGray3, true: COLORS.white }}
+          thumbColor={value ? COLORS.lightGreen : COLORS.white}
+          value={value}
+          onValueChange={(value) => onPress(value)}
+        />
       </View>
     );
   }
